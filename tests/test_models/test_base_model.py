@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+import sys
+sys.path.append('../..')
 from models.base_model import BaseModel
 import unittest
 import uuid
@@ -22,7 +25,7 @@ class TestBaseModel(unittest.TestCase):
         obj = BaseModel()
         original_updated_at = obj.updated_at
         obj.save()
-        self.assertNotEqual(original_update_at, obj.updated_at, msg=None)
+        self.assertNotEqual(original_updated_at, obj.updated_at, msg=None)
     def test_to_dict(self):
         """ Test case for BaseModel to_dict method """
         obj = BaseModel()
@@ -35,6 +38,13 @@ class TestBaseModel(unittest.TestCase):
                 obj.created_at.isoformat(), msg=None)
         self.assertEqual(obj_dict['updated_at'],
                 obj.updated_at.isoformat(), msg=None)
+
+    def test_str(self):
+        """Test the __str__ method of BaseModel."""
+        obj = BaseModel()
+        my_str = str(obj)
+        my_test = f"[{obj.__class__.__name__}] ({obj.id}) {obj.__dict__}"
+        self.assertEqual(my_str, my_test)
 
 if __name__ == '__main__':
     unittest.main()
