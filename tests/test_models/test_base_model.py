@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import sys
-sys.path.append('../..')
+sys.path.append('/root/AirBnB')
 from models.base_model import BaseModel
 import unittest
 import uuid
