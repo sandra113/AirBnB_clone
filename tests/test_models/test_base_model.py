@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 import sys
-sys.path.append('/root/AirBnB')
+import os
+cur_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.join(cur_dir, '../..'))
+#sys.path.append('/root/AirBnB/')
 from models.base_model import BaseModel
 import unittest
 import uuid
@@ -15,10 +18,14 @@ class TestBaseModel(unittest.TestCase):
     def test_init(self):
         """ Test case for class BaseModel __init__ method"""
         obj = BaseModel()
+        my_dict = obj.to_dict()
+        new_model = BaseModel(**my_dict)
         self.assertIsInstance(obj, BaseModel, msg=None)
         self.assertIsInstance(obj.id, str, msg=None)
         self.assertIsInstance(obj.created_at, datetime, msg=None)
         self.assertIsInstance(obj.updated_at, datetime, msg=None)
+        self.assertEqual(obj.id, new_model.id)
+        self.assertFalse(obj is new_model)
 
     def test_save(self):
         """ Test case for BaseModel save method """
