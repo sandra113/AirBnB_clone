@@ -7,14 +7,14 @@ from datetime import datetime
 from models.base_model import BaseModel
 from models.user import User
 
-""" Test case for User """
+""" Test case for BaseModel """
 
 
-class TestUser(unittest.TestCase):
-    """ Test case for User """
+class TestBaseModel(unittest.TestCase):
+    """ Test case for BaseModel """
 
     def test_init(self):
-        """ Test case for class User __init__ method"""
+        """ Test case for class BaseModel __init__ method"""
         obj = User()
         my_dict = obj.to_dict()
         new_model = User(**my_dict)
@@ -34,14 +34,14 @@ class TestUser(unittest.TestCase):
         self.assertEqual(obj.last_name, '')
 
     def test_save(self):
-        """ Test case for User save method """
+        """ Test case for BaseModel save method """
         obj = User()
         original_updated_at = obj.updated_at
         obj.save()
         self.assertNotEqual(original_updated_at, obj.updated_at, msg=None)
 
     def test_to_dict(self):
-        """ Test case for User to_dict method """
+        """ Test case for BaseModel to_dict method """
         obj = User()
         obj_dict = obj.to_dict()
         self.assertIsInstance(obj_dict, dict, msg=None)
@@ -52,7 +52,7 @@ class TestUser(unittest.TestCase):
         self.assertEqual(obj_dict['updated_at'], obj.updated_at.isoformat())
 
     def test_str(self):
-        """Test the __str__ method of User."""
+        """Test the __str__ method of BaseModel."""
         obj = User()
         my_str = str(obj)
         my_test = f"[{obj.__class__.__name__}] ({obj.id}) {obj.__dict__}"
