@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Module defining class FileStorage."""
 import json
-"""Module containing class FileStorage"""
 
 
 class FileStorage:
