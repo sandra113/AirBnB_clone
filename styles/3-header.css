@@ -1,0 +1,28 @@
+/* 3-header.css */
+header {
+    background-color: white;
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.logo {
+    background-image: url('../images/logo.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100px; 
+    height: 40px;
+    float: left;
+    margin-left: 20px;
+    line-height: 70px;
+    
+}
+
+
+/* Add the icon */
+link[rel="icon"] {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background-image: url('../images/icon.png');
+}
